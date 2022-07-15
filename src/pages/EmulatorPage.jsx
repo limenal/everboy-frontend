@@ -7,7 +7,7 @@ import everConn from '../connectors/everConnector'
 function EmulatorPage (props) {
 
     const walletAddress = useSelector((state) => state.accountAddress)
-
+    const [userNfts, setUserNfts] = useState([])
     useEffect(() => {
         console.log(walletAddress)
         if (walletAddress) {
@@ -17,7 +17,9 @@ function EmulatorPage (props) {
 
     const getUserNfts = async () => {
         const [ever, account] = await everConn.connectToEverWallet()
-        await getAllUserNfts(walletAddress, ever)
+        const userNfts = await getAllUserNfts(walletAddress, ever)
+        console.log(userNfts)
+        setUserNfts(userNfts)
     }
 
     return (
