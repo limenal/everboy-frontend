@@ -34,8 +34,8 @@ function Header () {
 
     return (
       <div>
-        <div className='flex justify-between my-8 mx-10'>
-            <ul className='flex space-x-6'>
+        <div className='flex justify-between mx-[40px]'>
+            <ul className='flex space-x-6 mt-[36px] text-white'>
                 <li className='flex space-x-4 items-center'>
                     <TiDeviceDesktop/>
                     <NavLink to="/">
@@ -57,12 +57,12 @@ function Header () {
 
             </ul>
             {isConnected ? 
-                <button className='flex w-[350px] h-[50px] items-center bg-gray-200 rounded-xl mr-10 p-4 hover:bg-gray-300 cursor-default'>
+                <button className='flex w-[348px] h-[48px] items-center bg-[#F6F76D] rounded-xl mr-10 p-4 hover:bg-gray-300 cursor-default mt-[36px]'>
                     <BiWallet/>
-                    <p className='mx-auto'>{address.slice(0, 14) + '...'}</p>
+                    <p className='mx-auto'>{address.slice(0, 20) + '...'}</p>
                 </button>
             : 
-                <button onClick={connectWallet} className='flex w-[350px] h-[50px] items-center bg-gray-200 rounded-xl mr-10 p-4 hover:bg-gray-300'>
+                <button onClick={connectWallet} className='flex w-[348px] h-[48px] items-center bg-[#F6F76D] rounded-xl mr-10 p-4 hover:bg-gray-300 mt-[36px]'>
                     <BiWallet/>
                     <p className='mx-auto'>Connect Wallet</p>
                 </button>

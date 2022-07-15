@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Chip8 from "./engine/Chip8.js";
+import Chip8 from "../engine/Chip8.js";
 
 const Game = ({ file, keyPressed, setKey }) => {
    const [ch, setCh] = useState();

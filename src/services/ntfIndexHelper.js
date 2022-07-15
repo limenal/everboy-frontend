@@ -23,14 +23,13 @@ function dec2hex (str) {
 async function getAllUserNfts (userAddress, rpc) {
     const ntfIndexHelperAddress = new Address('0:26fbe2fb50396d6ba1711cf8deac07bcebd2fc350e8d9f72586bb0085e3f5b81')
     const nftIndexHelper = await rpc.createContract(NFTIndexHelperAbi, ntfIndexHelperAddress)
-    const collectionAddress = new Address('0:ddc988a1bfbbc8589a761349843beed5898dc71c57bd5729ac2d4ae4d4005809')
+    const collectionAddress = new Address('0:64e42d7bfaab3ff46ebf1bfa6e10b42c46fd0702e50dc3aba80d1e2ecc34f0d1')
     const owner = new Address(userAddress)
     const indexCodeHash = await nftIndexHelper.methods.indexCodeHash({
         answerId: 0,
         collection: collectionAddress,
         owner
     }).call()
-    console.log(indexCodeHash.indexCodeHash)
     const hexString = dec2hex(indexCodeHash.indexCodeHash)
     console.log(hexString)
     const queryString = ` 
