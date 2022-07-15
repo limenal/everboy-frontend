@@ -4,6 +4,7 @@ import Game from '../components/Game'
 import getAllUserNfts from '../services/ntfIndexHelper'
 import everConn from '../connectors/everConnector'
 import spaceInvaders from '../files/SpaceInvaders.ch8'
+import IBMLogo from '../files/IBMLogo.ch8'
 
 function EmulatorPage (props) {
 
@@ -37,7 +38,7 @@ function EmulatorPage (props) {
 
    useEffect(() => {
       (async function() {
-         upload(await fetch(spaceInvaders).then(r => r.blob()));   
+         upload(await fetch(IBMLogo).then(r => r.blob()));   
       })();
    }, [])
 
@@ -54,8 +55,8 @@ function EmulatorPage (props) {
             <div className='w-1/4 h-[650px] bg-white rounded-2xl'>
 
             </div>
-            <div className='w-3/4 h-[650px] bg-white rounded-2xl'>
-                <Game file = {file} keyPressed = {keyPressed} setKey = {setKey} />
+            <div className='w-3/4 h-[650px] bg-white rounded-2xl' >
+                <Game style={{ height: '100%' , width: '100%'}} file = {file} keyPressed = {keyPressed} setKey = {setKey} />
             </div>
           </div>
       </div>
