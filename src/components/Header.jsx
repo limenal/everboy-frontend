@@ -7,7 +7,7 @@ import { CgShoppingCart } from 'react-icons/cg'
 import { BiWallet } from 'react-icons/bi'
 import everConn from '../connectors/everConnector'
 import { useDispatch, useSelector } from 'react-redux'
-import { setAccountAddress, setAccount, setEverRpc } from '../redux/actions'
+import { setAccountAddress,  } from '../redux/actions'
 function Header () {
     const dispatch = useDispatch()
     const address = useSelector((state) => state.accountAddress)
@@ -18,7 +18,7 @@ function Header () {
             dispatch(setAccountAddress(accountAddress))
             setIsConnected(true)
         }
-    })
+    }, [])
     const connectWallet = async () => {
         try {
             const [ever, account] = await everConn.connectToEverWallet()

@@ -5,7 +5,7 @@ import {
 } from './constants'
 
 const initialState = {
-    accountAddress: '123213',
+    accountAddress: '',
     account: null,
     everRpc: null
 }
