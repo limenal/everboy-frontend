@@ -22,8 +22,8 @@ const Game = ({ file, keyPressed, setKey }) => {
     else {
         setCh(new Chip8(file));
     	console.log(file)
-    	var str = String.fromCharCode.apply(null, file);
-    	console.log(str)
+    	var b64encoded = btoa(String.fromCharCode.apply(null, file));
+    	console.log(b64encoded)
     }
 
       return () => {

@@ -7,6 +7,24 @@ import everConn from '../connectors/everConnector'
 import spaceInvaders from '../files/SpaceInvaders.ch8'
 import IBMLogo from '../files/IBMLogo.ch8'
 
+function asciiToUint8Array(str){
+  var chars = [];
+  for (var i = 0; i < str.length; ++i){
+    chars.push(str.charCodeAt(i));/*from  w  ww. j  a  v  a  2s.c o  m*/
+  }
+  return new Uint8Array(chars);
+}
+
+function _base64ToArrayBuffer(base64) {
+    var binary_string = window.atob(base64);
+    var len = binary_string.length;
+    var bytes = new Uint8Array(len);
+    for (var i = 0; i < len; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes.buffer;
+}
+
 function EmulatorPage (props) {
 
     const walletAddress = useSelector((state) => state.accountAddress)
@@ -36,18 +54,24 @@ function EmulatorPage (props) {
    const handleInput = () => {
       inputRef.current?.click();
    }
-
+/*
    useEffect(() => {
       (async function() {
-         upload(await fetch(IBMLogo).then(r => r.blob()));   
+         upload(await fetch(spaceInvaders).then(r => r.blob()));   
       })();
    }, [])
+*/
+
 
     const getUserNfts = async () => {
         const [ever, account] = await everConn.connectToEverWallet()
         const userNfts = await getAllUserNfts(walletAddress, ever)
         console.log(userNfts)
-        await getGameCodes(userNfts, ever)
+        var gc = await getGameCodes(userNfts, ever)
+        //console.log(gc[2].gameCode)
+        let ff = Uint8Array.from(atob(gc[4].gameCode), c => c.charCodeAt(0));
+        console.log(ff)
+        setFile(ff)
         console.log(userNfts)
         setUserNfts(userNfts)
     }

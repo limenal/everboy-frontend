@@ -15,7 +15,7 @@ async function getGameCodes (nfts, rpc) {
     await Promise.allSettled(contractCreations)
     .then(results => {
         contractCalls = results.map((contract) => {
-            console.log(contract)
+            console.log(contract.value.methods.gameCode({}).call())
             return contract.value.methods.gameCode({}).call()
         })
     })
