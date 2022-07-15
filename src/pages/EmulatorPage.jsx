@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import Game from '../components/Game'
 import getAllUserNfts from '../services/ntfIndexHelper'
-import getGameCodes from '../services/nftService'
+import getNftInfo from '../services/nftService'
 import everConn from '../connectors/everConnector'
 import spaceInvaders from '../files/SpaceInvaders.ch8'
 import IBMLogo from '../files/IBMLogo.ch8'
@@ -18,7 +18,6 @@ function EmulatorPage (props) {
     const inputRef = useRef(null);
 
     useEffect(() => {
-        console.log(walletAddress)
         if (walletAddress) {
             getUserNfts()
         }
@@ -47,8 +46,8 @@ function EmulatorPage (props) {
         const [ever, account] = await everConn.connectToEverWallet()
         const userNfts = await getAllUserNfts(walletAddress, ever)
         console.log(userNfts)
-        await getGameCodes(userNfts, ever)
-        console.log(userNfts)
+        const nftsInfo = await getNftInfo(userNfts, ever)
+        console.log(nftsInfo)
         setUserNfts(userNfts)
     }
 
