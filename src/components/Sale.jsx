@@ -2,10 +2,8 @@ import CartridgeSvg from '../assets/cartridge.svg'
 import { BsArrowRight } from 'react-icons/bs'
 import { useEffect } from 'react'
 const Sale = ({SaleInfo}) => {
-    console.log(SaleInfo)
-    useEffect(() => {
+    console.log("---------------------",SaleInfo)
 
-    }, [])
     return (
         <div className='flex flex-col'>
             <div className='relative top-0 left-0'>

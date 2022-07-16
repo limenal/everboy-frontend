@@ -27,11 +27,12 @@ function MarketPage () {
   const getUserSales = async () => {
       const [ever, account] = await everConn.connectToEverWallet()
 
-      const sales = await getAllSales(ever)
-      setSales(sales)
+      const sales = await getAllSales(ever,account)
       console.log("-------")
       console.log(sales)
       console.log("-------")
+      setSales(sales)
+   
 
   }
     return (
