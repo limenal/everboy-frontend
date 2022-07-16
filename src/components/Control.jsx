@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-const Control = ({ setKey }) => {
+const Control = ({ setKey, name }) => {
    const [timeOut, setTime] = useState(false);
+
    const handleClick = (e, key) => {
       e.preventDefault();
       setKey(key);
@@ -13,23 +14,28 @@ const Control = ({ setKey }) => {
 
    return (
       <>
-         <div>
-            <p className = "cntr-p">Controls</p>
-         </div>
-         <div className = "grid">
-            <div onClick = {(e) => handleClick(e,"Digit1")} className ="box one">1</div>
-            <div onClick = {(e) => handleClick(e,"Digit2")} className ="box two">2</div>
-            <div onClick = {(e) => handleClick(e,"Digit3")} className ="box three">3</div>
-            <div onClick = {(e) => handleClick(e,"Digit4")} className ="box four">4</div>
-            <div onClick = {(e) => handleClick(e,"KeyQ")} className ="box q">Q</div>
-            <div onClick = {(e) => handleClick(e,"KeyW")} className ="box w">W</div>
-            <div onClick = {(e) => handleClick(e,"KeyE")} className ="box e">E</div>
-            <div onClick = {(e) => handleClick(e,"KeyR")} className ="box r">R</div>
-            <div onClick = {(e) => handleClick(e,"KeyA")} className ="box a">A</div>
-            <div onClick = {(e) => handleClick(e,"KeyS")} className ="box s">S</div>
-            <div onClick = {(e) => handleClick(e,"KeyD")} className ="box d">D</div>
-            <div onClick = {(e) => handleClick(e,"KeyF")} className ="box f">F</div>
-         </div>
+         <h1 className='text-5xl p-8 font-monoton'>{name}</h1>
+            <div className='mt-6'>
+                  <p className='p-8 font-sans text-lg'>Control</p>
+                  <div className='grid grid-cols-4 gap-y-2 px-8 text-3xl text-center font-pixellari'>
+                     <div onClick = {(e) => handleClick(e,"Digit1")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>1</div>
+                     <div onClick = {(e) => handleClick(e,"Digit2")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>2</div>
+                     <div onClick = {(e) => handleClick(e,"Digit3")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>3</div>
+                     <div onClick = {(e) => handleClick(e,"Digit4")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>4</div>
+                     <div onClick = {(e) => handleClick(e,"KeyQ")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>Q</div>
+                     <div onClick = {(e) => handleClick(e,"KeyW")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>W</div>
+                     <div onClick = {(e) => handleClick(e,"KeyE")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>E</div>
+                     <div onClick = {(e) => handleClick(e,"KeyR")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>R</div>
+                     <div onClick = {(e) => handleClick(e,"KeyA")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>A</div>
+                     <div onClick = {(e) => handleClick(e,"KeyS")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>S</div>
+                     <div onClick = {(e) => handleClick(e,"KeyD")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>D</div>
+                     <div onClick = {(e) => handleClick(e,"KeyF")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>F</div>
+                     <div onClick = {(e) => handleClick(e,"KeyZ")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>Z</div>
+                     <div onClick = {(e) => handleClick(e,"KeyX")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>X</div>
+                     <div onClick = {(e) => handleClick(e,"KeyC")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>C</div>
+                     <div onClick = {(e) => handleClick(e,"KeyV")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>V</div>
+                  </div>
+            </div>
       </>
    )
 }
