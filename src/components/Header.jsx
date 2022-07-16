@@ -34,7 +34,7 @@ const Header = () => {
 
     return (
       <div>
-        <div className='flex justify-between mx-[40px]'>
+        <div className='flex justify-between mx-[40px] select-none'>
             <ul className='flex space-x-6 mt-[36px] text-white'>
                 <li className='flex space-x-4 items-center'>
                     <TbDeviceGamepad/>
