@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setNfts } from '../redux/actions'
 import Game from '../components/Game'
 import getAllUserNfts from '../services/ntfIndexHelper'
 import getNftInfo from '../services/nftService'
@@ -16,6 +17,8 @@ function EmulatorPage (props) {
     const [title, setTitle] = useState("Space Invaders");
     const [keyPressed, setKey] = useState();
     const inputRef = useRef(null);
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (walletAddress) {
@@ -48,15 +51,16 @@ function EmulatorPage (props) {
         console.log(userNfts)
         const nftsInfo = await getNftInfo(userNfts, ever)
         console.log(nftsInfo)
+        dispatch(setNfts(nftsInfo))
         setUserNfts(userNfts)
     }
 
     return (
       <div className='flex justify-center h-full'>
           <div className='p-6 bg-[#F6F76D] w-full h-[700px] rounded-2xl flex items-center gap-x-10 justify-center'>
-            <div className='w-1/4 h-[650px] bg-[#AB76EE] rounded-2xl '>
-                <h1 className='text-5xl p-8 font-monoton'>CARTRIDGE NAME #1</h1>
-                <div className='mt-6'>
+            <div className='w-1/4 h-[650px] bg-[#AB76EE] rounded-2xl flex justify-start'>
+                <div className='mt-4'>
+                <h1 className='text-5xl p-8 font-monoton flex justify-items-start'>CARTRIDGE NAME #1</h1>
                     <p className='p-8 font-sans text-lg'>Control</p>
                     <div className='grid grid-cols-4 gap-y-2 px-8 text-3xl text-center font-pixellari'>
                         <div className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>1</div>
