@@ -11,7 +11,7 @@ const SalesList = ({SalesArray}) => {
     return (
         <div className='flex justify-start gap-x-10'>
             {SalesArray.map((value, index) => {
-                return <Sale SaleInfo={value} />
+                return (<Sale SaleInfo={value} />)
             })}
         </div>
     )
