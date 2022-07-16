@@ -84,7 +84,7 @@ const Cartridge = ({cartridgeInfo}) => {
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                    Send game
+                    Сoming coon..
                   </button>
                 </div>
               </div>
