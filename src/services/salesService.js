@@ -43,15 +43,28 @@ async function getAllSales(rpc) {
   });
 
   const sale = [];
-  await Promise.allSettled(contractCalls).then((results) => {
-    results.forEach((item, index) =>
-      item.value.value0.forEach((v) => {
-        let nft= await rpc.createContract(NftAbi,v)
-        let resGetJson = await nft.value.methods.getJson.({
+  await Promise.allSettled(contractCalls).then(async(results) => {
+    results.forEach(async (item, index) =>
+      item.value.value0.forEach(async(v) => {
+        let nft = await rpc.createContract(NftAbi,v[0])
+
+        let resGetJson = await nft.methods.getJson({
             answerId: 0,
           })
           .call()
-        sale.push({ sale: contracts[index], json: v });
+          let result= {
+           ...JSON.parse(resGetJson.json.replaceAll('\'','\"')),
+            price: v[1]/(10000000000000000000000000)/4,
+            sale :contracts[index],
+            buy: ()=>{console.log("i can not buy")}
+          }
+          result = {
+            ...result,
+            pictureSrc:result.pic
+          }
+          result.pic=undefined;
+          console.log(JSON.parse(resGetJson.json.replaceAll('\'','\"')))
+        sale.push(result);
       })
     );
   });

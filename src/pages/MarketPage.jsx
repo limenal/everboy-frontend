@@ -10,7 +10,7 @@ import { BsChevronRight } from 'react-icons/bs'
 import SalesList from '../components/SalesList'
 
 function MarketPage () {
-
+  const [sales, setSales] = useState([])
   const walletAddress = useSelector((state) => state.accountAddress)
 
 
@@ -24,21 +24,15 @@ function MarketPage () {
 
 
 
-
   const getUserSales = async () => {
       const [ever, account] = await everConn.connectToEverWallet()
 
-      const something = await getAllSales(ever)
+      const sales = await getAllSales(ever)
+      setSales(sales)
       console.log("-------")
-      console.log(something)
+      console.log(sales)
       console.log("-------")
 
-      
-      // const userNfts = await getAllUserNfts(walletAddress, ever)
-      // console.log(userNfts)
-      // const nftsInfo = await getNftInfo(userNfts, ever)
-      // console.log(nftsInfo)
-      // setUserNfts(userNfts)
   }
     return (
       <div className='flex justify-center h-full'>
@@ -58,7 +52,7 @@ function MarketPage () {
               </div>
           </div>
           <div className="">
-              <SalesList SalesArray={[]}/>
+              <SalesList SalesArray={sales}/>
           </div>
       </div>
     </div>

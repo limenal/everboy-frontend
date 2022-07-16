@@ -8,7 +8,7 @@ const SalesList = ({SalesArray}) => {
     }]
     return (
         <div className='flext justify-start gap-x-10'>
-            {array.map((value, index) => {
+            {SalesArray.map((value, index) => {
                 return <Sale SaleInfo={value} key={index}/>
             })}
         </div>
