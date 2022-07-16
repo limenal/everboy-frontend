@@ -16,7 +16,7 @@ const Control = ({ setKey, name }) => {
       <>
          <h1 className='text-5xl p-8 font-monoton'>{name}</h1>
             <div className='mt-6'>
-                  <p className='p-8 font-sans text-lg'>Control</p>
+                  <p className='p-8 font-sans text-lg'>Controls</p>
                   <div className='grid grid-cols-4 gap-y-2 px-8 text-3xl text-center font-pixellari'>
                      <div onClick = {(e) => handleClick(e,"Digit1")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>1</div>
                      <div onClick = {(e) => handleClick(e,"Digit2")} className='bg-[#F6F76D] w-[77px] h-[77px] rounded-2xl flex items-center justify-center cursor-default'>2</div>

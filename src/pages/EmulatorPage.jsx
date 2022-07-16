@@ -5,8 +5,7 @@ import Control from '../components/Control'
 import getAllUserNfts from '../services/ntfIndexHelper'
 import getGameCodes from '../services/nftService'
 import everConn from '../connectors/everConnector'
-import spaceInvaders from '../files/SpaceInvaders.ch8'
-import IBMLogo from '../files/IBMLogo.ch8'
+import ibmLogo from '../files/IBMLogo.ch8'
 
 function asciiToUint8Array(str){
   var chars = [];
@@ -58,7 +57,7 @@ function EmulatorPage (props) {
 
    useEffect(() => {
       (async function() {
-         upload(await fetch(spaceInvaders).then(r => r.blob()));   
+         upload(await fetch(ibmLogo).then(r => r.blob()));   
       })();
    }, [])
 
