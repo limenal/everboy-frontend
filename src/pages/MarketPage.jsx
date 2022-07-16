@@ -11,6 +11,7 @@ import SalesList from '../components/SalesList'
 
 function MarketPage () {
   const [sales, setSales] = useState([])
+  const [salesCount, setSalesCount] = useState(0)
   const walletAddress = useSelector((state) => state.accountAddress)
 
 
@@ -22,18 +23,17 @@ function MarketPage () {
 
 
 
-
+  const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
   const getUserSales = async () => {
       const [ever, account] = await everConn.connectToEverWallet()
 
       const sales = await getAllSales(ever,account)
-      console.log("-------")
-      console.log(sales)
-      console.log("-------")
+      await sleep (1000)
+      setSalesCount(sales.length)
       setSales(sales)
-   
-
   }
     return (
       <div className='flex justify-center h-full'>
@@ -41,7 +41,7 @@ function MarketPage () {
           <div className="flex py-6 mt-5 justify-between">
               <div className="flex space-x-4">
                   <h1 className="text-6xl font-monoton">MARKET</h1>
-                  <h1 className="text-6xl font-monoton opacity-30">10</h1>
+                  <h1 className="text-6xl font-monoton opacity-30">{salesCount ? salesCount : ''}</h1>
               </div>
               <div className="flex justify-center items-center mr-8">
                   <div className="rounded-full w-[64px] h-[64px] hover:bg-black flex items-center justify-center cursor-pointer">
