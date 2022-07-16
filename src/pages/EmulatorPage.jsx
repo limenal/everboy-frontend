@@ -1,46 +1,27 @@
 import { useEffect, useState, useRef } from 'react'
-import { useSelector } from 'react-redux'
 import Game from '../components/Game'
 import Control from '../components/Control'
+import { useSelector, useDispatch } from 'react-redux'
+import { setNfts } from '../redux/actions'
 import getAllUserNfts from '../services/ntfIndexHelper'
-import getGameCodes from '../services/nftService'
+import getNftInfo from '../services/nftService'
 import everConn from '../connectors/everConnector'
 import ibmLogo from '../files/IBMLogo.ch8'
-
-function asciiToUint8Array(str){
-  var chars = [];
-  for (var i = 0; i < str.length; ++i){
-    chars.push(str.charCodeAt(i));/*from  w  ww. j  a  v  a  2s.c o  m*/
-  }
-  return new Uint8Array(chars);
-}
-
-function _base64ToArrayBuffer(base64) {
-    var binary_string = window.atob(base64);
-    var len = binary_string.length;
-    var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++) {
-        bytes[i] = binary_string.charCodeAt(i);
-    }
-    return bytes.buffer;
-}
+import spaceInvaders from '../files/SpaceInvaders.ch8'
+import IBMLogo from '../files/IBMLogo.ch8'
 
 function EmulatorPage (props) {
 
-    const walletAddress = useSelector((state) => state.accountAddress)
-    const [userNfts, setUserNfts] = useState([])
     const [timeOut, setTime] = useState(false);
     const [file, setFile] = useState([]);
     const [title, setTitle] = useState("Space Invaders");
     const [keyPressed, setKey] = useState();
+
+    const currentGame = useSelector((state) => state.game)
+
     const inputRef = useRef(null);
 
-    useEffect(() => {
-        console.log(walletAddress)
-        if (walletAddress) {
-            getUserNfts()
-        }
-    }, [walletAddress])
+    const dispatch = useDispatch()
 
     const upload = (f) => {
       if(!f)
@@ -61,8 +42,6 @@ function EmulatorPage (props) {
       })();
    }, [])
 
-
-
     const getUserNfts = async () => {
         const [ever, account] = await everConn.connectToEverWallet()
         const userNfts = await getAllUserNfts(walletAddress, ever)
@@ -76,12 +55,21 @@ function EmulatorPage (props) {
         console.log(userNfts)
         setUserNfts(userNfts)
     }
+    
+    useEffect(() => {
+        console.log(currentGame) 
+    }, [currentGame])
 
     return (
       <div className='flex justify-center h-full'>
           <div className='p-6 bg-[#F6F76D] w-full h-[700px] rounded-2xl flex items-center gap-x-10 justify-center'>
             <div className='w-1/4 h-[650px] bg-[#AB76EE] rounded-2xl '>
                 <Control name={'CARTRIDGE NAME #1'} />
+=======
+    return (
+      <div className='flex justify-center h-full'>
+          <div className='p-6 bg-[#F6F76D] w-full h-[700px] rounded-2xl flex items-center gap-x-10 justify-center'>
+            <div className='w-1/4 h-[650px] bg-[#AB76EE] rounded-2xl flex justify-start'>
             </div>
             <div className='w-3/4 h-[650px] bg-[#AB76EE] rounded-2xl'>
                 <Game style={{ height: '100%' , width: '100%'}} file = {file} keyPressed = {keyPressed} setKey = {setKey} />

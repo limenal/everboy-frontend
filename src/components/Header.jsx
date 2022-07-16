@@ -8,7 +8,7 @@ import { BiWallet } from 'react-icons/bi'
 import everConn from '../connectors/everConnector'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAccountAddress,  } from '../redux/actions'
-function Header () {
+const Header = () => {
     const dispatch = useDispatch()
     const address = useSelector((state) => state.accountAddress)
     const [isConnected, setIsConnected] = useState(false)
@@ -37,15 +37,15 @@ function Header () {
         <div className='flex justify-between mx-[40px]'>
             <ul className='flex space-x-6 mt-[36px] text-white'>
                 <li className='flex space-x-4 items-center'>
-                    <TiDeviceDesktop/>
+                    <TbDeviceGamepad/>
                     <NavLink to="/">
-                        Emulator
+                        My Games
                     </NavLink>
                 </li>
                 <li className='flex space-x-4 items-center'>
-                    <TbDeviceGamepad/>
-                    <NavLink to="/my-games">
-                        My Games
+                    <TiDeviceDesktop/>
+                    <NavLink to="/emulator">
+                        Emulator
                     </NavLink>
                 </li>
                 <li className='flex space-x-4 items-center'>
@@ -57,12 +57,12 @@ function Header () {
 
             </ul>
             {isConnected ? 
-                <button className='flex w-[348px] h-[48px] items-center bg-[#F6F76D] rounded-xl mr-10 p-4 hover:bg-gray-300 cursor-default mt-[36px]'>
+                <button className='flex w-[348px] h-[48px] items-center bg-[#F6F76D] rounded-xl mr-10 p-4 hover:bg-[#ffff0d] cursor-default mt-[36px]'>
                     <BiWallet/>
                     <p className='mx-auto'>{address.slice(0, 20) + '...'}</p>
                 </button>
             : 
-                <button onClick={connectWallet} className='flex w-[348px] h-[48px] items-center bg-[#F6F76D] rounded-xl mr-10 p-4 hover:bg-gray-300 mt-[36px]'>
+                <button onClick={connectWallet} className='flex w-[348px] h-[48px] items-center bg-[#F6F76D] rounded-xl mr-10 p-4 hover:bg-[#ffff0d] mt-[36px]'>
                     <BiWallet/>
                     <p className='mx-auto'>Connect Wallet</p>
                 </button>

@@ -1,13 +1,17 @@
 import {
     SET_ACCOUNT_ADDRESS,
     SET_ACCOUNT,
-    SET_EVER_RPC
+    SET_EVER_RPC,
+    SET_NFTS,
+    SET_GAME
 } from './constants'
 
 const initialState = {
     accountAddress: '',
     account: null,
-    everRpc: null
+    everRpc: null,
+    nfts: [],
+    game: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +32,18 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 everRpc: action.payload.everRpc
+            }
+        }
+        case SET_NFTS: {
+            return {
+                ...state,
+                nfts: action.payload.nfts
+            }
+        }
+        case SET_GAME: {
+            return {
+                ...state,
+                game: action.payload.game
             }
         }
         default: {
