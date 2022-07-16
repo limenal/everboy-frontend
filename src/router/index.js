@@ -6,9 +6,9 @@ import MyGamesPage from '../pages/MyGamesPage'
 export default function RouterPages() {
   return (
     <Routes>
-      <Route path="/" element={<EmulatorPage />} />
+      <Route path="/" element={<MyGamesPage />} />
+      <Route path="/emulator" element={<EmulatorPage />} />
       <Route path="/market" element={<MarketPage />} />
-      <Route path="/my-games" element={<MyGamesPage />} />
     </Routes>
   )
 }

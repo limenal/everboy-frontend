@@ -1,30 +1,25 @@
 import { useEffect, useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setNfts } from '../redux/actions'
-import Game from '../components/Game'
 import getAllUserNfts from '../services/ntfIndexHelper'
 import getNftInfo from '../services/nftService'
 import everConn from '../connectors/everConnector'
+import Game from '../components/Game'
 import spaceInvaders from '../files/SpaceInvaders.ch8'
 import IBMLogo from '../files/IBMLogo.ch8'
 
 function EmulatorPage (props) {
 
-    const walletAddress = useSelector((state) => state.accountAddress)
-    const [userNfts, setUserNfts] = useState([])
     const [timeOut, setTime] = useState(false);
     const [file, setFile] = useState([]);
     const [title, setTitle] = useState("Space Invaders");
     const [keyPressed, setKey] = useState();
+
+    const currentGame = useSelector((state) => state.game)
+
     const inputRef = useRef(null);
 
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        if (walletAddress) {
-            getUserNfts()
-        }
-    }, [walletAddress])
 
     const upload = (f) => {
       if(!f)
@@ -45,16 +40,9 @@ function EmulatorPage (props) {
       })();
    }, [])
 
-    const getUserNfts = async () => {
-        const [ever, account] = await everConn.connectToEverWallet()
-        const userNfts = await getAllUserNfts(walletAddress, ever)
-        console.log(userNfts)
-        const nftsInfo = await getNftInfo(userNfts, ever)
-        console.log(nftsInfo)
-        dispatch(setNfts(nftsInfo))
-        setUserNfts(userNfts)
-    }
-
+    useEffect(() => {
+        console.log(currentGame) 
+    }, [currentGame])
     return (
       <div className='flex justify-center h-full'>
           <div className='p-6 bg-[#F6F76D] w-full h-[700px] rounded-2xl flex items-center gap-x-10 justify-center'>

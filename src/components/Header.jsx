@@ -37,15 +37,15 @@ const Header = () => {
         <div className='flex justify-between mx-[40px]'>
             <ul className='flex space-x-6 mt-[36px] text-white'>
                 <li className='flex space-x-4 items-center'>
-                    <TiDeviceDesktop/>
+                    <TbDeviceGamepad/>
                     <NavLink to="/">
-                        Emulator
+                        My Games
                     </NavLink>
                 </li>
                 <li className='flex space-x-4 items-center'>
-                    <TbDeviceGamepad/>
-                    <NavLink to="/my-games">
-                        My Games
+                    <TiDeviceDesktop/>
+                    <NavLink to="/emulator">
+                        Emulator
                     </NavLink>
                 </li>
                 <li className='flex space-x-4 items-center'>
