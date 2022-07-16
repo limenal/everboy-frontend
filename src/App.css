@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+.box {
+   background-color: #444;
+   color: #fff;
+   border-radius: 5px;
+   padding: 10% 0% 10% 30%;
+   font-size: 200%;
+   /* padding: 10% 45%;
+   font-size: 100%; */
+ }
+ 
+ .box:hover {
+    background-color: coral;
+    cursor: pointer;
+ }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

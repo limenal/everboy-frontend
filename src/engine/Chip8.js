@@ -64,8 +64,8 @@ class Chip8 {
       const secondNibble = (instruction & 0b0000111100000000) >> 8;  // second half bit
       const thirdNibble = (instruction & 0b0000000011110000) >> 4;   // third half bit
       const fourthNibble = (instruction & 0b0000000000001111);
-      const secondByte = (instruction & 0b0000000011111111);         // NN
-      const addr = (instruction & 0b0000111111111111);               // NNN
+      const secondByte = (instruction & 0b0000000011111111); 
+      const addr = (instruction & 0b0000111111111111); 
 
       switch(firstNibble) {
          case 0:
