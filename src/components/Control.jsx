@@ -14,7 +14,7 @@ const Control = ({ setKey, name }) => {
 
    return (
       <>
-         <h1 className='text-5xl p-8 font-monoton'>{name}</h1>
+         <h1 className='text-2xl p-8 font-monoton break-words text-center m-4'>{name}</h1>
             <div className='mt-6'>
                   <p className='p-8 font-sans text-lg'>Controls</p>
                   <div className='grid grid-cols-4 gap-y-2 px-8 text-3xl text-center font-pixellari'>
