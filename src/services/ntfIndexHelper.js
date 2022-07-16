@@ -5,6 +5,9 @@ import {
 import axios from 'axios'
 import NFTIndexHelperAbi from '../abis/NFTIndexHelper.abi.json'
 import IndexAbi from '../abis/Index.abi.json'
+
+const COLLECTION_ADDRESS = "0:434ca0444d5ab0ec3d9cc93ddf9ab9bb9b2ac1200553d02c147c2c8c28b348aa"
+
 function dec2hex (str) {
     var dec = str.toString().split(''), sum = [], hex = [], i, s
     while(dec.length){
@@ -23,7 +26,7 @@ function dec2hex (str) {
 async function getAllUserNfts (userAddress, rpc) {
     const ntfIndexHelperAddress = new Address('0:26fbe2fb50396d6ba1711cf8deac07bcebd2fc350e8d9f72586bb0085e3f5b81')
     const nftIndexHelper = await rpc.createContract(NFTIndexHelperAbi, ntfIndexHelperAddress)
-    const collectionAddress = new Address('0:64e42d7bfaab3ff46ebf1bfa6e10b42c46fd0702e50dc3aba80d1e2ecc34f0d1')
+    const collectionAddress = new Address(COLLECTION_ADDRESS)
     const owner = new Address(userAddress)
     const indexCodeHash = await nftIndexHelper.methods.indexCodeHash({
         answerId: 0,
