@@ -3,8 +3,8 @@ import axios from "axios";
 import Sale from "../abis/Sale.abi.json";
 import NftAbi from '../abis/Nft.abi.json'
 
-const SALE_CODE_HASH =
-  "82cb7e5822f1e290654153168a948b13f129524d4b13bdf377daf09468f4d549";
+// const SALE_CODE_HASH ="82cb7e5822f1e290654153168a948b13f129524d4b13bdf377daf09468f4d549";
+const SALE_CODE_HASH ="22b998b89ab194758342c7e3de4211e9a6f6f1802774cf318ebb153f7a2d5f75";
 
 async function getAllSales(rpc,account) {
   const hexString = SALE_CODE_HASH;
