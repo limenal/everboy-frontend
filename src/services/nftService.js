@@ -13,8 +13,12 @@ async function getNftInfo (nfts, rpc) {
     })
     let gameCodeCalls
     let infoCalls
+    let addresses
     await Promise.allSettled(contractCreations)
     .then(results => {
+        addresses = results.map((contract) => {
+            return contract.value._address._address
+        })
         gameCodeCalls = results.map((contract) => {
             return contract.value.methods.gameCode({}).call()
         })
@@ -26,6 +30,8 @@ async function getNftInfo (nfts, rpc) {
     })
     const gameCodes = []
     const nftsInfo = []
+    const infoAddress = []
+    console.log(addresses)
     await Promise.allSettled(gameCodeCalls)
     .then(results => {
         console.log(results)
@@ -40,7 +46,8 @@ async function getNftInfo (nfts, rpc) {
     for (let i = 0; i < gameCodes.length; ++i) {
         outputInfo.push({
             ...nftsInfo[i],
-            ...gameCodes[i]
+            ...gameCodes[i],
+            address: addresses[i]
         })
     }
     return outputInfo
